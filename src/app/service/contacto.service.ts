@@ -8,7 +8,6 @@ export class ContactoService {
 
   contactos: Contacto[] = [];
 
-  constructor() { }
 
   save(contacto: Contacto){
     this.contactos.push(contacto);
@@ -26,11 +25,15 @@ export class ContactoService {
     }
   }
 
-  update(cedula: string, contactoService: Contacto){
+  update(cedula: string, contactoActualizado: Contacto){
     const index =this.contactos.findIndex(Contacto => Contacto.cedula=== cedula);
     if(index !==-1){
-      this.contactos[index]= contactoService;
+      this.contactos[index]= contactoActualizado;
     }
+  }
+
+  getContactoCedula(cedula: string): Contacto | undefined{
+    return this.contactos.find(Contacto => Contacto.cedula === cedula);
   }
 
   

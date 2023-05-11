@@ -22,11 +22,12 @@ export class ListContactosComponent {
     console.log(contacto)
     let params: NavigationExtras = {
       queryParams: {
-        contacto: contacto,
-        nombre: 'Cristian'
+        cedula: contacto.cedula
+       
+        
       }
     }
-    this.router.navigate(['paginas/nuevo-contacto'], params)
+    this.router.navigate(["paginas/edit-contacto"], params)
   }
 
   eliminar(contacto: Contacto) {
@@ -34,6 +35,24 @@ export class ListContactosComponent {
     this.listadoContactos= this.contactoService.getList();
     
   }
+  actualizar(contacto: Contacto) {
+    const contactoIndex = this.listadoContactos.findIndex(c => c.cedula === contacto.cedula);
+
+    if (contactoIndex !== -1) {
+      const contactoOriginal = this.listadoContactos[contactoIndex];
+      // Verificar si los datos han cambiado
+      if (contacto.nombre !== contactoOriginal.nombre || contacto.direccion !== contactoOriginal.direccion) {
+        this.listadoContactos[contactoIndex] = contacto;
+        console.log('Contacto actualizado:', contacto);
+      } else {
+        console.log('No se han realizado cambios en el contacto:', contacto);
+      }
+    } else {
+      // Si no existe el contacto, agregarlo
+      this.listadoContactos.push(contacto);
+      console.log('Nuevo contacto agregado:', contacto);
+    }
+}
 }
 
   

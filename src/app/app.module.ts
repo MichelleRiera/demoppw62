@@ -13,6 +13,7 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
 import { ListContactosComponent } from './pages/list-contactos/list-contactos.component';
 import { HeaderComponent } from './template/header/header.component';
 import { FormsModule } from '@angular/forms';
+import { EditContactoComponent } from './pages/edit-contacto/edit-contacto.component';
 
 
 
@@ -28,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     AcercaComponent,
     ContactoComponent,
     ListContactosComponent,
-    HeaderComponent
+    HeaderComponent,
+    EditContactoComponent
   ],
   imports: [
     BrowserModule,

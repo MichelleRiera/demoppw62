@@ -7,7 +7,7 @@
 <ul>
     <li *ngFor="let contacto of listadoContactos">
         <a (click)="editar(contacto)">{{contacto.cedula}} | {{contacto.nombre}} | {{contacto.direccion}}</a>
-        <a href="" (click)="eliminar(contacto)">Eliminar</a>
+        <button (click)="eliminar(contacto)">Eliminar</button>
     </li>
     
 </ul>

@@ -1,0 +1,27 @@
+label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    color: #da3752;
+  }
+  
+  input[type="text"] {
+    padding: 0.5rem;
+    border: 2px solid #d3354f;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  button {
+    background-color: #eb3e5b;
+    color: #FFF;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #FF69B4;
+  }
+  
