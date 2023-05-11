@@ -1,0 +1,27 @@
+div#contenedor{
+    display: flex;
+}
+
+div div#col_1{
+    width: 300px;
+    height: 179px;
+    border: 1px solid black;
+
+}
+div div#col_2{
+    width: 700px;
+    height: 500px;
+    border: 1px solid black;
+}
+
+
+div div#col_3{
+    width: 400px;
+    height: 500px;
+    border: 1px solid black;
+
+}
+
+app-centro{
+    grid-area: center-content;
+}

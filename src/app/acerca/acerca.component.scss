@@ -1,0 +1,65 @@
+body {
+    background-color: #f7d1e6; /* rosa claro */
+    font-family: Arial, sans-serif;
+    color: #333; /* color de texto oscuro */
+  }
+  
+  header {
+    background-color: #f279a5; /* rosa medio */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-right: 20px;
+  }
+  
+  nav ul li a {
+    color: #fff; /* texto blanco */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .carrito a {
+    color: #fff; /* texto blanco */
+    background-color: #d341c7; /* rosa oscuro */
+    padding: 10px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  
+  
+  section {
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  section h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #f279a5; /* rosa medio */
+  }
+  
+  section p {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: justify;
+  }
+  
+  
+  
