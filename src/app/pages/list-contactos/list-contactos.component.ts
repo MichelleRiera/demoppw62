@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { Contacto } from 'src/app/domain/contacto';
 import { ContactoService } from 'src/app/service/contacto.service';
@@ -10,49 +10,75 @@ import { ContactoService } from 'src/app/service/contacto.service';
 })
 export class ListContactosComponent {
 
-  listadoContactos: Contacto[] = []
+  listadoContactos: Contacto[];
+  //contacto: Contacto = new Contacto();
 
   constructor(private contactoService: ContactoService,
       private router: Router) {
     this.listadoContactos = contactoService.getList()
     console.log('listadoContactos', this.listadoContactos)
+    //this.contacto = contactoService.contacto
+    
   }
 
   editar(contacto: Contacto){
-    console.log(contacto)
+    //this.contacto = contacto
+    this.contactoService.updateContacto(contacto)
     let params: NavigationExtras = {
       queryParams: {
         cedula: contacto.cedula
-       
-        
+
       }
     }
-    this.router.navigate(["paginas/edit-contacto"], params)
+    //this.router.navigate(["paginas/edit-contacto"], params)
+   
+ 
+
   }
+
+  editar1(contacto: Contacto) {
+    console.log(contacto);
+  
+    let params: NavigationExtras = {
+      queryParams: {
+        cedula: contacto.cedula,
+      },
+    };
+    this.router.navigate(["paginas/edit-contacto"], params);
+  
+    // Mostrar los valores del objeto Contacto en los campos de texto correspondientes
+    const inputCedula = document.getElementById('txtCedula') as HTMLInputElement;
+    const inputNombre = document.getElementById('txtNombre') as HTMLInputElement;
+    const inputDireccion = document.getElementById('txtDireccion') as HTMLInputElement;
+  
+    if (inputCedula && inputNombre && inputDireccion) {
+      inputCedula.value = contacto.cedula;
+      inputNombre.value = contacto.nombre;
+      inputDireccion.value = contacto.direccion;
+      contacto.cedula = inputCedula.value;
+      contacto.nombre = inputNombre.value;
+      contacto.direccion = inputDireccion.value;
+  
+      this.contactoService.update(contacto.cedula, contacto);
+    }
+  
+    this.router.navigate(['list-paginas/listacontactos']);
+  }
+  
+  
+  
 
   eliminar(contacto: Contacto) {
     this.contactoService.delete(contacto.cedula);
     this.listadoContactos= this.contactoService.getList();
     
   }
-  actualizar(contacto: Contacto) {
-    const contactoIndex = this.listadoContactos.findIndex(c => c.cedula === contacto.cedula);
+  guardar1() {
+    //this.contactoService.update(this.contacto.cedula, this.contacto);
+    this.router.navigate(['list-paginas/listacontactos']);
+  }
+  
 
-    if (contactoIndex !== -1) {
-      const contactoOriginal = this.listadoContactos[contactoIndex];
-      // Verificar si los datos han cambiado
-      if (contacto.nombre !== contactoOriginal.nombre || contacto.direccion !== contactoOriginal.direccion) {
-        this.listadoContactos[contactoIndex] = contacto;
-        console.log('Contacto actualizado:', contacto);
-      } else {
-        console.log('No se han realizado cambios en el contacto:', contacto);
-      }
-    } else {
-      // Si no existe el contacto, agregarlo
-      this.listadoContactos.push(contacto);
-      console.log('Nuevo contacto agregado:', contacto);
-    }
-}
 }
 
   

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cabecera',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./cabecera.component.scss']
 })
 export class CabeceraComponent {
+
 
 }

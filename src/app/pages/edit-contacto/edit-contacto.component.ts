@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Contacto } from 'src/app/domain/contacto';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router,NavigationExtras } from '@angular/router';
 import { ContactoService } from 'src/app/service/contacto.service';
+
 
 
 @Component({
@@ -28,4 +29,7 @@ export class EditContactoComponent {
     this.contactoservice.update(this.contacto.cedula, this.contacto);
     this.router.navigate(['list-paginas/listacontactos']);
   }
+ 
+
+ 
 }

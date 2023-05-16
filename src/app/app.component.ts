@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component , EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Contacto } from './domain/contacto';
+import { ContactoService } from './service/contacto.service';
+
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'demoppw62';
+  
+  @Input() name = "Michelle"
+
+  constructor(private contactoService: ContactoService) { 
+  }
+
+  ngOnInit() {
+  }
 }

@@ -1,22 +1,21 @@
 <div>
   
-    <form>
-      <div>
-        <label for="cedula">Cedula:</label>
-        <input type="text" id="cedula" [(ngModel)]="contacto.cedula" name="cedula">
-      </div>
-  
-      <div>
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" [(ngModel)]="contacto.nombre" name="nombre">
-      </div>
-  
-      <div>
-        <label for="direccion">Direccion:</label>
-        <input type="text" id="direccion" [(ngModel)]="contacto.direccion" name="direccion">
-      </div>
-  
-      <button (click)="guardar()">Guardar</button>
-    </form>
-  </div>
-  
+  <form>
+    <div>
+      <label for="cedula">Cedula:</label>
+      <input type="text" id="cedula" [(ngModel)]="contacto.cedula" name="cedula">
+    </div>
+
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" [(ngModel)]="contacto.nombre" name="nombre">
+    </div>
+
+    <div>
+      <label for="direccion">Direccion1:</label>
+      <input type="text" id="direccion" [(ngModel)]="contacto.direccion" name="direccion">
+    </div>
+
+    <button (click)="guardar()">Guardar</button>
+  </form>
+</div>
