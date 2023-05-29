@@ -18,7 +18,7 @@ export class ListContactosComponent {
     this.listadoContactos = contactoService.getList()
     console.log('listadoContactos', this.listadoContactos)
     //this.contacto = contactoService.contacto
-    
+    console.log('lista')
   }
 
   editar(contacto: Contacto){
@@ -35,38 +35,6 @@ export class ListContactosComponent {
  
 
   }
-
-  editar1(contacto: Contacto) {
-    console.log(contacto);
-  
-    let params: NavigationExtras = {
-      queryParams: {
-        cedula: contacto.cedula,
-      },
-    };
-    this.router.navigate(["paginas/edit-contacto"], params);
-  
-    // Mostrar los valores del objeto Contacto en los campos de texto correspondientes
-    const inputCedula = document.getElementById('txtCedula') as HTMLInputElement;
-    const inputNombre = document.getElementById('txtNombre') as HTMLInputElement;
-    const inputDireccion = document.getElementById('txtDireccion') as HTMLInputElement;
-  
-    if (inputCedula && inputNombre && inputDireccion) {
-      inputCedula.value = contacto.cedula;
-      inputNombre.value = contacto.nombre;
-      inputDireccion.value = contacto.direccion;
-      contacto.cedula = inputCedula.value;
-      contacto.nombre = inputNombre.value;
-      contacto.direccion = inputDireccion.value;
-  
-      this.contactoService.update(contacto.cedula, contacto);
-    }
-  
-    this.router.navigate(['list-paginas/listacontactos']);
-  }
-  
-  
-  
 
   eliminar(contacto: Contacto) {
     this.contactoService.delete(contacto.cedula);

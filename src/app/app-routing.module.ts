@@ -11,6 +11,9 @@ const routes: Routes = [
   {path: "paginas/listacontactos", component: ListContactosComponent},
   {path: "paginas/nuevo-contacto", component: ContactoComponent},
   {path: "paginas/edit-contacto" , component: EditContactoComponent}
+
+
+
 ];
 
 @NgModule({

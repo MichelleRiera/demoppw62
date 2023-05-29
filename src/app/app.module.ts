@@ -14,6 +14,9 @@ import { ListContactosComponent } from './pages/list-contactos/list-contactos.co
 import { HeaderComponent } from './template/header/header.component';
 import { FormsModule } from '@angular/forms';
 import { EditContactoComponent } from './pages/edit-contacto/edit-contacto.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -35,7 +38,10 @@ import { EditContactoComponent } from './pages/edit-contacto/edit-contacto.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
