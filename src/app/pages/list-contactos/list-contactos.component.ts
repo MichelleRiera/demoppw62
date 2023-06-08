@@ -12,17 +12,17 @@ export class ListContactosComponent {
 
   listadoContactos: Contacto[];
   //contacto: Contacto = new Contacto();
+   listadoContactosFire: any;
 
   constructor(private contactoService: ContactoService,
       private router: Router) {
     this.listadoContactos = contactoService.getList()
     console.log('listadoContactos', this.listadoContactos)
-    //this.contacto = contactoService.contacto
+    this.listadoContactosFire = contactoService.getAll()
     console.log('lista')
   }
 
-  editar(contacto: Contacto){
-    //this.contacto = contacto
+  editar1(contacto: Contacto){
     this.contactoService.updateContacto(contacto)
     let params: NavigationExtras = {
       queryParams: {
@@ -35,17 +35,53 @@ export class ListContactosComponent {
  
 
   }
+  /*editar(contacto: Contacto){
+    this.contactoService.update(contacto.uid, contacto)
+    let params: NavigationExtras = {
+      queryParams: {
+        uid: contacto.uid
 
-  eliminar(contacto: Contacto) {
+      }
+    }
+    //this.router.navigate(["paginas/edit-contacto"], params)
+   
+ 
+
+  }*/
+
+  /*eliminar(contacto: Contacto) {
     this.contactoService.delete(contacto.cedula);
     this.listadoContactos= this.contactoService.getList();
     
+  }*/
+
+  eliminar(contacto: Contacto) {
+    this.contactoService.delete1(contacto.uid)
+      .then(() => {
+        this.listadoContactos = this.contactoService.getList();
+      })
+      .catch((error) => {
+        console.error("Error al eliminar el contacto:", error);
+      });
   }
-  guardar1() {
-    //this.contactoService.update(this.contacto.cedula, this.contacto);
-    this.router.navigate(['list-paginas/listacontactos']);
+  editar(contacto: Contacto) {
+    this.contactoService.actualizarContacto(contacto)
+      .then(() => {
+        let params: NavigationExtras = {
+          queryParams: {
+            uid: contacto.uid
+          }
+        };
+        //this.router.navigate(["paginas/edit-contacto"], params);
+      })
+      .catch((error) => {
+        console.error("Error al actualizar el contacto:", error);
+      });
   }
   
+  
+  
+
 
 }
 

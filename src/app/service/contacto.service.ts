@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Contacto } from '../domain/contacto';
 import { ContactoComponent } from '../pages/contacto/contacto.component';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactoService {
+  private dbPath = '/contactos'; 
 
   contactos: Contacto[] = [];
   comp: any;
+  contactosRef: AngularFirestoreCollection<Contacto>;
+
+  constructor(private db: AngularFirestore) {
+    this.contactosRef = db.collection(this.dbPath);
+  }
 
   setComponet(comp: ContactoComponent){
     this.comp = comp
@@ -17,12 +24,14 @@ export class ContactoService {
   updateContacto(contacto: Contacto){
     this.comp.contacto = contacto
   }
+  
 
   save(contacto: Contacto){
 
     this.contactos.push({ ...contacto });
-    //this.contacto = new Contacto()
     console.log(this.contactos);
+    contacto.uid = this.db.createId()
+    this.create(contacto)
     
   }
 
@@ -37,19 +46,63 @@ export class ContactoService {
     }
   }
 
-  update(cedula: string, contactoActualizado: Contacto){
+  /*update1(cedula: string, contactoActualizado: Contacto){
     const index =this.contactos.findIndex(Contacto => Contacto.cedula=== cedula);
     if(index !==-1){
       this.contactos[index]= contactoActualizado;
       return true;
     }
       return false;
+  }*/
+
+  update2(uid: string, contactoActualizado: Contacto){
+    const index =this.contactos.findIndex(Contacto => Contacto.uid=== uid);
+    if(index !==-1){
+      this.contactos[index]= contactoActualizado;
+      return true;
+    }
+      return false;
   }
+  
+  
 
   getContactoCedula(cedula: string): Contacto | undefined{
     return this.contactos.find(Contacto => Contacto.cedula === cedula);
   }
 
+  create(contacto: Contacto): any {
+    return this.contactosRef.doc(contacto.uid).set({ ...contacto });
+  }
+  update(id: string, data: any): Promise<void> {
+    return this.contactosRef.doc(id).update(data);
+  }
 
+  delete1(id: string): Promise<void> {
+    return this.contactosRef.doc(id).delete();
+  }
+  getAll() {
+    return this.contactosRef.valueChanges();
+  }
+  async actualizarContacto(contacto: Contacto) {
+    try {
+      const dataToUpdate = {
+        nombre: contacto.nombre,
+        cedula: contacto.cedula,
+        direccion: contacto.direccion
+      };
+  
+      await this.contactosRef.doc(contacto.uid).update(dataToUpdate);
+  
+      this.comp.contacto = contacto; // Establecer los datos en los atributos correspondientes
+  
+      console.log("Contacto actualizado correctamente en Firestore");
+    } catch (error) {
+      console.error("Error al actualizar el contacto en Firestore:", error);
+    }
+  }
   
 }
+
+
+
+  

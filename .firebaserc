@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "proyecto1-88aea": {
+      "hosting": {
+        "demoppw62": [
+          "proyecto1-88aea"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "proyecto1-88aea"
+  }
+}

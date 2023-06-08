@@ -25,7 +25,7 @@ export class ContactoComponent {
     }
 
 
-  guardar() {
+  /*guardar() {
     if (this.contactoService.update(this.contacto.cedula, this.contacto)){
       console.log('actualizado')
       this.contacto = new Contacto()
@@ -33,10 +33,15 @@ export class ContactoComponent {
       this.contactoService.save(this.contacto)
       this.contacto = new Contacto()
       
-    }
-  
-    
-  }
-
-  
-}
+    }*/
+    guardar() {
+      if (this.contactoService.update2(this.contacto.uid, this.contacto)){
+        console.log('actualizado')
+        this.contacto = new Contacto()
+      }else{
+        this.contactoService.save(this.contacto)
+        this.contacto = new Contacto()
+        
+      }
+   }
+   }   

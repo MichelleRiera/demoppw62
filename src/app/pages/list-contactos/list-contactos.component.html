@@ -5,9 +5,12 @@
 </span>
 
 <ul>
-    <li *ngFor="let contacto of listadoContactos">
-        <a (click)="editar(contacto)">{{contacto.cedula}} | {{contacto.nombre}} | {{contacto.direccion}}</a>
+    <!-- <li *ngFor="let contacto of listadoContactos">
+        <a (click)="editar(contacto)">{{contacto.uid}} |{{contacto.cedula}} | {{contacto.nombre}} | {{contacto.direccion}}</a>
+        <button (click)="eliminar(contacto)">Eliminar</button>
+    </li>-->
+    <li *ngFor="let contacto of listadoContactosFire | async">
+        <a (click)="editar(contacto)">{{contacto.uid}} |{{contacto.cedula}} | {{contacto.nombre}} | {{contacto.direccion}}</a>
         <button (click)="eliminar(contacto)">Eliminar</button>
     </li>
-    
 </ul>
