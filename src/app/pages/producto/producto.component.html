@@ -1,0 +1,19 @@
+<label for="txtcon" class="flores">Producto</label>
+
+<br/>
+<label for="txtidp">ID:</label>
+<span id="txtidp" >{{producto.idP}}</span>
+<br/>
+<label for="txtnombrep">Nombre:</label>
+<input id="txtnombrep" [(ngModel)]="producto.nombreP"/>
+
+<br/>
+<label for="txtprecio">Precio:</label>
+<input id="txtprecio" [(ngModel)]="producto.precio"/>
+<br/>
+
+<div class="centrar-boton">
+    <button (click)="guardar()">Guardar</button>
+  </div>
+  
+

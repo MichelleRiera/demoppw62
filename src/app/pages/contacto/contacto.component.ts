@@ -25,16 +25,21 @@ export class ContactoComponent {
     }
 
 
-  /*guardar() {
-    if (this.contactoService.update(this.contacto.cedula, this.contacto)){
-      console.log('actualizado')
-      this.contacto = new Contacto()
-    }else{
-      this.contactoService.save(this.contacto)
-      this.contacto = new Contacto()
-      
-    }*/
+  
     guardar() {
+      this.contactoService.actualizarContacto(this.contacto.uid, this.contacto)
+        .then(() => {
+          console.log('Contacto actualizado');
+          this.contacto = new Contacto();
+        })
+        .catch(() => {
+          this.contactoService.save(this.contacto);
+          console.log('Contacto guardado');
+          this.contacto = new Contacto();
+        });
+    }
+    
+   actualizar() {
       if (this.contactoService.update2(this.contacto.uid, this.contacto)){
         console.log('actualizado')
         this.contacto = new Contacto()

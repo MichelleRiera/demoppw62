@@ -21,6 +21,8 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { ProductoComponent } from './pages/producto/producto.component';
+import { ListProductosComponent } from './pages/list-productos/list-productos.component';
 
 
 
@@ -37,7 +39,9 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     ContactoComponent,
     ListContactosComponent,
     HeaderComponent,
-    EditContactoComponent
+    EditContactoComponent,
+    ProductoComponent,
+    ListProductosComponent
   ],
   imports: [
     BrowserModule,

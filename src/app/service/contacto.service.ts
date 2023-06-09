@@ -24,8 +24,8 @@ export class ContactoService {
   updateContacto(contacto: Contacto){
     this.comp.contacto = contacto
   }
+ 
   
-
   save(contacto: Contacto){
 
     this.contactos.push({ ...contacto });
@@ -75,6 +75,7 @@ export class ContactoService {
   }
   update(id: string, data: any): Promise<void> {
     return this.contactosRef.doc(id).update(data);
+    
   }
 
   delete1(id: string): Promise<void> {
@@ -83,23 +84,26 @@ export class ContactoService {
   getAll() {
     return this.contactosRef.valueChanges();
   }
-  async actualizarContacto(contacto: Contacto) {
-    try {
-      const dataToUpdate = {
+  async actualizarContacto(id: string, contacto: Contacto) {
+   
+      const dataToUpdate: Contacto = {
+        ...contacto,
         nombre: contacto.nombre,
         cedula: contacto.cedula,
         direccion: contacto.direccion
       };
+      console.log(Contacto)
+      this.comp.contacto = dataToUpdate; // Actualizar el contacto en el componente
   
-      await this.contactosRef.doc(contacto.uid).update(dataToUpdate);
-  
-      this.comp.contacto = contacto; // Establecer los datos en los atributos correspondientes
+      await this.contactosRef.doc(id).update(dataToUpdate);
   
       console.log("Contacto actualizado correctamente en Firestore");
-    } catch (error) {
-      console.error("Error al actualizar el contacto en Firestore:", error);
-    }
+     
   }
+  
+
+ 
+  
   
 }
 

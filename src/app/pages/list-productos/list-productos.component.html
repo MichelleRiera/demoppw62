@@ -1,0 +1,14 @@
+<p>list-productos works!</p>
+<span *ngIf="listadoProductos.length == 0">
+    No existen productos
+</span>
+
+<ul>
+    
+    <li *ngFor="let producto of listadoProductosFire | async">
+    {{producto.idP }}|{{producto.nombreP}} |{{producto.precio}} 
+        <button (click)="editar(producto.idP, producto)">Editar</button>
+        <button (click)="eliminarProducto(producto)">Eliminar</button>
+    </li>
+    
+</ul>

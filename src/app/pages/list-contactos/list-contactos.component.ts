@@ -22,7 +22,7 @@ export class ListContactosComponent {
     console.log('lista')
   }
 
-  editar1(contacto: Contacto){
+  /*editar1(contacto: Contacto){
     this.contactoService.updateContacto(contacto)
     let params: NavigationExtras = {
       queryParams: {
@@ -34,7 +34,7 @@ export class ListContactosComponent {
    
  
 
-  }
+  }*/
   /*editar(contacto: Contacto){
     this.contactoService.update(contacto.uid, contacto)
     let params: NavigationExtras = {
@@ -60,12 +60,10 @@ export class ListContactosComponent {
       .then(() => {
         this.listadoContactos = this.contactoService.getList();
       })
-      .catch((error) => {
-        console.error("Error al eliminar el contacto:", error);
-      });
+      
   }
-  editar(contacto: Contacto) {
-    this.contactoService.actualizarContacto(contacto)
+  editar(id: string, contacto: Contacto) {
+    this.contactoService.actualizarContacto(id, contacto)
       .then(() => {
         let params: NavigationExtras = {
           queryParams: {
@@ -74,10 +72,9 @@ export class ListContactosComponent {
         };
         //this.router.navigate(["paginas/edit-contacto"], params);
       })
-      .catch((error) => {
-        console.error("Error al actualizar el contacto:", error);
-      });
+      
   }
+  
   
   
   

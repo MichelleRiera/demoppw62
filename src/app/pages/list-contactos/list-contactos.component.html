@@ -10,7 +10,10 @@
         <button (click)="eliminar(contacto)">Eliminar</button>
     </li>-->
     <li *ngFor="let contacto of listadoContactosFire | async">
-        <a (click)="editar(contacto)">{{contacto.uid}} |{{contacto.cedula}} | {{contacto.nombre}} | {{contacto.direccion}}</a>
+      
+        {{contacto.uid}} |{{contacto.cedula}} | {{contacto.nombre}} | {{contacto.direccion}}
+        <button (click)="editar(contacto.uid, contacto)">Editar</button>
         <button (click)="eliminar(contacto)">Eliminar</button>
     </li>
+    
 </ul>

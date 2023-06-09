@@ -1,5 +1,8 @@
+<label for="txtcon" class="flores">Contacto</label>
+
+<br/>
 <label for="txtid">ID:</label>
-<input id="txtid" [(ngModel)]="contacto.uid"/>
+<span id="txtid">{{contacto.uid}}</span>
 <br/>
 <label for="txtCedula">Cédula:</label>
 <input id="txtCedula" [(ngModel)]="contacto.cedula"/>
@@ -13,4 +16,10 @@
 
 <br/>
 
-<button (click)="guardar()">Guardar</button>
+<div class="centrar-boton">
+    <button (click)="guardar()">Guardar</button>
+  </div>
+
+
+
+
