@@ -17,6 +17,10 @@ export class ContactoService {
     this.contactosRef = db.collection(this.dbPath);
   }
 
+
+  update4(id: string, data: any): Promise<void> {
+    return this.contactosRef.doc(id).update(data);
+  }
   setComponet(comp: ContactoComponent){
     this.comp = comp
   }
@@ -30,7 +34,7 @@ export class ContactoService {
 
     this.contactos.push({ ...contacto });
     console.log(this.contactos);
-    contacto.uid = this.db.createId()
+    contacto.persona_id = this.db.createId()
     this.create(contacto)
     
   }
@@ -55,8 +59,8 @@ export class ContactoService {
       return false;
   }*/
 
-  update2(uid: string, contactoActualizado: Contacto){
-    const index =this.contactos.findIndex(Contacto => Contacto.uid=== uid);
+  update2(persona_id: string, contactoActualizado: Contacto){
+    const index =this.contactos.findIndex(Contacto => Contacto.persona_id=== persona_id);
     if(index !==-1){
       this.contactos[index]= contactoActualizado;
       return true;
@@ -71,7 +75,7 @@ export class ContactoService {
   }
 
   create(contacto: Contacto): any {
-    return this.contactosRef.doc(contacto.uid).set({ ...contacto });
+    return this.contactosRef.doc(contacto.persona_id).set({ ...contacto });
   }
   update(id: string, data: any): Promise<void> {
     return this.contactosRef.doc(id).update(data);

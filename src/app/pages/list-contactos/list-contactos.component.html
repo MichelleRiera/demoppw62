@@ -9,11 +9,17 @@
         <a (click)="editar(contacto)">{{contacto.uid}} |{{contacto.cedula}} | {{contacto.nombre}} | {{contacto.direccion}}</a>
         <button (click)="eliminar(contacto)">Eliminar</button>
     </li>-->
-    <li *ngFor="let contacto of listadoContactosFire | async">
+   <!--  <li *ngFor="let contacto of listadoContactosFire | async">
       
         {{contacto.uid}} |{{contacto.cedula}} | {{contacto.nombre}} | {{contacto.direccion}}
         <button (click)="editar(contacto.uid, contacto)">Editar</button>
         <button (click)="eliminar(contacto)">Eliminar</button>
+    </li>-->
+
+
+    <li *ngFor="let contacto of listadoContactosWS">
+        <a (click)="editar(contacto.uid, contacto)">{{contacto.cedula}} | {{contacto.nombre}} | {{contacto.direccion}}</a>
+        <a href="" (click)="eliminar(contacto)">Eliminar</a>
     </li>
     
 </ul>

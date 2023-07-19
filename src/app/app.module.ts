@@ -23,7 +23,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { ProductoComponent } from './pages/producto/producto.component';
 import { ListProductosComponent } from './pages/list-productos/list-productos.component';
-
+import {HttpClientModule} from '@angular/common/http'
 
 
 
@@ -50,6 +50,7 @@ import { ListProductosComponent } from './pages/list-productos/list-productos.co
     BrowserAnimationsModule,
     MatSlideToggleModule,
     MatTableModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
   ],

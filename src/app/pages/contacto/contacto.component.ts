@@ -1,3 +1,4 @@
+import { PersonasService } from './../../service/personas.service';
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Contacto } from 'src/app/domain/contacto';
@@ -13,6 +14,7 @@ export class ContactoComponent {
   contacto: any = new Contacto();
 
   constructor(private contactoService: ContactoService,
+    private personasService: PersonasService,
     private router: Router) {
       console.log('hola')
       let params = this.router.getCurrentNavigation()?.extras.queryParams;
@@ -26,8 +28,9 @@ export class ContactoComponent {
 
 
   
-    guardar() {
-      this.contactoService.actualizarContacto(this.contacto.uid, this.contacto)
+   /* guardar() {
+      this.contactoService.actualizarContacto(this.contacto.uid, this.contacto,)
+      
         .then(() => {
           console.log('Contacto actualizado');
           this.contacto = new Contacto();
@@ -37,10 +40,21 @@ export class ContactoComponent {
           console.log('Contacto guardado');
           this.contacto = new Contacto();
         });
-    }
+
+        
+    }*/
+    guardar() {
+    console.log(this.contacto)
+    // antes firebase --> this.contactoService.save(this.contacto)
+    this.personasService.save(this.contacto).subscribe(data => {
+      console.log("resultado WS save", data);
+    });
+    this.contacto = new Contacto()
+  }
+  
     
    actualizar() {
-      if (this.contactoService.update2(this.contacto.uid, this.contacto)){
+      if (this.contactoService.update2(this.contacto.persona_id, this.contacto)){
         console.log('actualizado')
         this.contacto = new Contacto()
       }else{

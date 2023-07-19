@@ -1,5 +1,5 @@
 export class Contacto {
-    uid: string = '';
+    persona_id: string = '';
     nombre: string = '';
     cedula: string = '';
     direccion: string = '';
