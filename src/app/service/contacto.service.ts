@@ -93,8 +93,10 @@ export class ContactoService {
       const dataToUpdate: Contacto = {
         ...contacto,
         nombre: contacto.nombre,
+        apellido: contacto.apellido,
         cedula: contacto.cedula,
-        direccion: contacto.direccion
+        direccion: contacto.direccion,
+        telefono: contacto.telefono
       };
       console.log(Contacto)
       this.comp.contacto = dataToUpdate; // Actualizar el contacto en el componente

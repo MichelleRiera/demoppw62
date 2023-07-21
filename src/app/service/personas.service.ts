@@ -21,4 +21,17 @@ export class PersonasService {
     let url = "http://localhost:8080/demo/rs/Clientes/listarPersonas";
     return this.http.get<any>(url);     
   }
+
+  delete(cedula: string) {
+    const url = `http://localhost:8080/demo/rs/Clientes/eliminar`;
+    const options = {
+      body: { cedula }
+    };
+    console.log('eliminar')
+    return this.http.delete<any>(url, options);
+  }
+  
+
+  
+  
 }
