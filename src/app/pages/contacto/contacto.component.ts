@@ -43,7 +43,7 @@ export class ContactoComponent {
     guardar() {
       console.log(this.contacto);
       this.personasService.save(this.contacto).subscribe(data => {
-        this.loadContactList(); 
+       this.loadContactList(); 
         console.log("resultado WS save", data);
         // Agregar el nuevo contacto a la lista local (listadoContactosWS)
         this.listadoContactosWS.push(data); // Suponiendo que el servicio devuelve el contacto guardado (data)
@@ -55,7 +55,7 @@ export class ContactoComponent {
       this.personasService.obtenerPersonas().subscribe(
         (response) => {
           this.listadoContactosWS = response;
-          this.loadContactList(); 
+         this.loadContactList(); 
   
           console.log('Listado de contactos:', this.listadoContactosWS);
         },
